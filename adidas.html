@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Anmol Narang</strong> <span>Portfolio</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major" style="display: flex; align-items: center;">
+										<h1 style="margin-right: 200px;">Adidas US Sales Analysis</h1>
+										<div style="display: flex; gap: 15px;">
+											<a href="https://humberital-my.sharepoint.com/:x:/g/personal/n01579763_humber_ca/EWTf6XBNIZxAl52oJNwlTj8By52velp1RsrBCwZngVTJ0Q?e=bTPP6b" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">Dataset</a>
+											<a href="https://github.com/narang-anmol/PortfolioProjects/blob/main/Adidas%20US%20Sales%20Queries.sql" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">Queries</a>
+											<a href="https://humberital-my.sharepoint.com/:w:/g/personal/n01579763_humber_ca/EbLL5KRw7iVAmvg4hbgSnD4B7xlEft_yqJDKPxKvT7_-5w?e=nRsODm" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">Output</a>
+											<a href="adidas_dash.html" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">Dashboard</a>
+										</div>
+									</header>																
+																	
+									<span class="image main"><img src="images/adidas.png" alt="" /></span>
+									<h2>1. Introduction</h2>
+									<p>In this project, I will conduct an in-depth analysis of the Adidas US Sales Dataset, focusing on critical business metrics such as <b>revenue growth</b>, <b>operating efficiency</b>, and <b>regional product performance</b>. The objective is to uncover trends in customer demand, assess the profitability of different product lines, and identify high-performing regions and sales channels. Through data-driven insights, I will provide actionable recommendations aimed at optimizing business strategy, driving revenue growth, improving operational margins, and enhancing regional sales performance. This analysis will also offer insights into consumer behavior, enabling Adidas to refine product offerings and tailor marketing efforts to maximize profitability and market share.</p>
+									<h2>2. Dataset Walkthrough</h2>
+									<p>The Adidas US Sales Dataset contains detailed information on sales transactions across various retailers, regions, and product lines. This detailed walkthrough of the dataset provides an understanding of each variable's role in driving the analysis. Below is an overview of the key fields in the dataset, along with their data types and relevance to the analysis:</p>
+									<p>1. <b>Retailer (VARCHAR)</b>: The name of the store or business that sold Adidas products. This is crucial for analyzing retailer performance and identifying top-performing partners.</p>
+									<p>2. <b>Retailer ID (INT)</b>: A unique identification number for each retailer. This field will be useful when aggregating data across multiple retailers or linking data with other sources.</p>
+									<p>3. <b>Invoice Date (DATE)</b>: The specific date of the sales transaction. It allows for time-based analysis, such as sales trends over time, seasonality, and growth comparisons.</p>
+									<p>4. <b>Region (VARCHAR)</b>: The broader geographic area where the sale took place (e.g., Northeast, Midwest). Analyzing by region helps identify regional demand, underperforming markets, and potential opportunities for expansion.</p>
+									<p>5. <b>State (VARCHAR)</b>: The specific state where the sale was made. Along with regional data, this helps in understanding localized sales performance and assessing state-level trends.</p>
+									<p>6. <b>City (VARCHAR)</b>: The city where the sale occurred. City-level analysis can uncover specific urban centers with high sales volumes and areas where targeted marketing efforts might increase profitability.</p>
+									<p>7. <b>Product (VARCHAR)</b>: The type of Adidas product sold, such as footwear or apparel. This column will be key for identifying top-performing product categories and demand patterns for different types of products.</p>
+									<p>8. <b>Price per Unit (DECIMAL)</b>: The price at which each unit of the product was sold. Price data allows for analysis of average selling price, price optimization strategies, and comparisons across retailers and regions.</p>
+									<p>9. <b>Units Sold (INT)</b>: The number of units sold in each transaction. This column, combined with price and sales, provides insights into product demand and inventory management.</p>
+									<p>10. <b>Total Sales (INT)</b>: The total revenue generated from the transaction (calculated as Price per Unit * Units Sold). This is a key metric for assessing the financial performance of different products, retailers, and regions.</p>
+									<p>11. <b>Operating Profit (INT)</b>: The profit generated after deducting operational costs from total sales. This column allows for assessing the profitability of each transaction as well as calculating profit margins for products and regions.</p>
+									<p>12. <b>Operating Margin (DECIMAL)</b>: The operating profit as a percentage of total sales. This metric indicates the efficiency of generating profit from sales, a critical indicator for both product-level and overall business performance.</p>
+									<p>13. <b>Sales Method (VARCHAR)</b>: The sales channel through which the product was sold, such as in-store or online. This is important for analyzing channel performance and making decisions about where to focus marketing and sales efforts.</p>
+									<h2>3. Data Preprocessing</h2>
+									<p>To ensure the dataset is clean and ready for import into SQL for analysis, I performed the following preprocessing steps in Excel:</p>
+									<p><b>1. Removing Empty Rows</b>: Any rows with missing values were removed, as these could cause issues during analysis. This ensures that the dataset is complete and every record is useful.</p>
+
+									<p><b>2. Converting Operating Margin to Decimals</b>: The "Operating Margin" column, initially a percentage, was converted to decimal format to facilitate better comparison and calculation in SQL (e.g., 25% becomes 0.25). This aids in easier mathematical operations during the analysis.</p>
+
+									<p><b>3. Reformatting Columns</b>:</p>
+									<ul>
+										<li><b>Price per Unit, Operating Profit, Units Sold & Total Sales</b>: Removed any commas and dollar signs to treat these as numerical values.</li>
+										<li><b>Invoice Date</b>: Ensured that the "Invoice Date" column is in a consistent date format (e.g., YYYY-MM-DD) for time-based queries.</li>
+									</ul>
+
+									<p><b>4. Normalization of Sales Method and Region</b>: I standardized the entries in the "Sales Method" and "Region" columns by correcting any inconsistencies in spelling or formatting to make them uniform.</p>
+
+									<p><b>5. Removing Duplicate Rows</b>: I checked for and removed any duplicate rows to avoid skewing the results, ensuring each transaction is unique.</p>
+
+									<p><b>6. Ensuring Data Consistency</b>: I ensured consistent case (upper or lower) for string data (e.g., city names, retailer names) to avoid mismatches during queries.</p>
+									<h2>4. Analysis</h2>
+									<p>Based on the goals of this project, I wrote these SQL queries to help analyze the dataset to reach informed conclusions and make appropriate recommendations:</p>
+										<p><b>1. Revenue Growth Over Time:</b></p>
+										<p><img src="images/growth_over_time.png"/></p>
+										<p><b>2. Operating Efficiency:</b></p>
+										<p><img src="images/operating_efficiency.png"/></p>
+										<p><b>3. Regional Product Performance:</b></p>
+										<p><img src="images/regional_product_performance.png"/></p>
+										<p><b>4. Retailers' Performance:</b></p>
+										<p><img src="images/top_retailers.png"/></p>
+										<p><b>5. Sales Channels Performance:</b></p>
+										<p><img src="images/sales_channels.png"/></p>	
+									<h2>5. Conclusions</h2>	
+									<p><b>1. Revenue Growth Trends:</b> The analysis of monthly revenue shows a significant increase from 2020 to 2021, with fluctuations due to potential seasonality and external factors (e.g., the impact of the pandemic in 2020). Notably, there is a major surge in January 2021, indicating strong recovery or a promotional period.</p>
+									<p><b>2. Operating Efficiency:</b> Products such as Men's Street Footwear and Women's Apparel exhibit high operating margins (39.65% and 38.34%, respectively). This indicates that these categories are highly profitable and efficient in generating revenue relative to their operational costs.</p>
+									<p><b>3. Regional Product Performance:</b> The Midwest and West regions have strong sales performance across different product lines, especially in Men’s Street Footwear. The West region particularly stands out with higher sales volumes and profitability compared to other regions, suggesting greater consumer demand and market penetration.</p>
+									<p><b>4. Top Performing Retailers:</b> Retailers like West Gear and Foot Locker dominate sales and profit performance, contributing significantly to Adidas' revenue. This highlights the importance of focusing on these retail partners for maintaining and expanding market share.</p>														
+									<p><b>5. Sales Channel Performance:</b> In-store sales contribute the most to total revenue and profit, followed closely by outlet sales. However, online sales, while trailing in total sales, show a strong profit margin, reflecting lower overhead costs compared to physical store sales.</p>														
+									<h2>6. Recommendations</h2>	
+									<p><b>1. Expand Online Sales Strategy:</b> Although online sales are currently behind in-store and outlet channels, they are showing strong profit margins. Adidas should consider increasing investment in e-commerce platforms, optimizing digital marketing efforts, and providing online-exclusive deals to boost online revenue further.</p>
+
+									<p><b>2. Target High-Margin Products:</b> Focus marketing and sales efforts on high-margin products such as Men's Street Footwear and Women's Apparel. Increasing inventory and promotional activities for these items can drive higher profitability.</p>
+
+									<p><b>3. Enhance Regional Strategies:</b> The West region demonstrates strong sales performance across multiple product lines. Adidas should consider expanding its presence in this region with targeted promotions and increasing inventory to maximize revenue. Additionally, underperforming regions like the Midwest could benefit from market research to understand consumer preferences and adjust product offerings accordingly.</p>
+
+									<p><b>4. Strengthen Key Retail Partnerships:</b> Given that West Gear and Foot Locker are top-performing retailers, Adidas should focus on strengthening partnerships with these companies. Collaborations on exclusive product lines, joint marketing campaigns, and ensuring consistent stock levels could further enhance profitability.</p>
+
+									<p><b>5. Optimize Sales Channels:</b> In-store and outlet sales are the dominant revenue channels. Adidas should continue to invest in improving in-store experiences, such as personalized customer service and immersive brand environments, while also exploring opportunities to integrate online and offline channels for a seamless omnichannel experience.</p>
+								</div>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/narang-anmol" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/narang-anmol/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Anmol Narang</strong> <span>Portfolio</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major" style="display: flex; align-items: center;">
+										<h1 style="margin-right: 250px;">Coffee Sales & Customers Analysis</h1>
+										<div style="display: flex; gap: 15px;">
+											<a href="https://humberital-my.sharepoint.com/:x:/g/personal/n01579763_humber_ca/EUAmzTw74kRHqvnRkSNWaoUBxmmUVqFkCHk77ALHJvlXhQ?e=egxNNA" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View/Download Excel File</a>
+										</div>
+									</header>
+									<span class="image main"><img src="images/coffee_small.jpg" alt="" /></span>
+									<h2>Introduction</h2>
+										<p>
+											In an increasingly competitive market, businesses must rely on data to guide their decisions and strategies. 
+											This project performs a comprehensive analysis of coffee sales and customer behavior, focusing on 
+											detailed order data from a coffee distribution company. The dataset includes over 10,000 individual orders, 
+											covering a wide range of attributes such as product details, customer segmentation, and sales performance.
+										</p>
+										<p>
+											By analyzing sales trends, product performance, customer loyalty, and regional trends, the goal is to 
+											uncover actionable insights that can drive revenue growth and operational efficiency. This analysis will serve 
+											as a foundation for strategic decision-making and provide the company with data-driven recommendations to 
+											optimize marketing efforts, enhance customer retention, and improve overall profitability. Additionally, this 
+											project demonstrates the ability to interpret large datasets and derive meaningful insights.
+										</p>
+										<h2>Data Overview</h2>
+										<p>The analysis focuses on an orders dataset containing over 10,000 records. Initially, this dataset included only the following columns:</p>
+										<ul>
+											<li><strong>Order ID:</strong> Unique identifier for each order.</li>
+											<li><strong>Order Date:</strong> Date when the order was placed.</li>
+											<li><strong>Customer ID:</strong> Identifier for the customer making the order.</li>
+											<li><strong>Product ID:</strong> Identifier for the product being purchased.</li>
+											<li><strong>Quantity:</strong> Number of units sold in each order.</li>
+										</ul>
+										<p>Additionally, there were two other sheets included in the dataset:</p>
+										<ul>
+											<li><strong>Products Sheet:</strong> Contains details about the products, including coffee types, roast types, sizes, and pricing.</li>
+											<li><strong>Customers Sheet:</strong> Includes information about customers, such as names, emails, countries, and loyalty card statuses.</li>
+										</ul>
+									
+										<h2>Data Population Process</h2>
+										<p>To enrich the orders dataset, I took the following steps:</p>
+										<ol>
+											<li><strong>Data Structuring:</strong> Converted the orders sheet into tables for easier data management and to enable refreshing of the data source.</li>
+											<li><strong>Customer Data Population:</strong> Utilized <strong>XLOOKUP</strong> to retrieve customer information, including <strong>Customer Name</strong>, <strong>Email</strong>, <strong>Country</strong>, and <strong>Loyalty Card Status</strong>, from the <strong>customers sheet</strong>.</li>
+											<li><strong>Product Data Population:</strong> Employed <strong>INDEX-MATCH</strong> functions to obtain product details such as <strong>Coffee Type</strong>, <strong>Roast Type</strong>, <strong>Size</strong>, and <strong>Unit Price</strong> from the <strong>products sheet</strong>.</li>
+											<li><strong>Sales Calculation:</strong> Calculated the <strong>Sales</strong> column by applying a multiplication formula: <strong>Unit Price × Quantity Sold</strong>.</li>
+											<li><strong>Coffee Type and Roast Type Naming:</strong> Created new columns for <strong>Coffee Type Name</strong> and <strong>Roast Type Name</strong> using the <strong>IF</strong> function to provide full names based on their respective codes.</li>
+											<li><strong>Data Reformatting:</strong> Reformatted the <strong>Order Date</strong> column for consistency. Standardized the <strong>Size</strong> column to include the <strong>kg</strong> metric. Reformatted the <strong>Unit Price</strong> and <strong>Sales</strong> columns to reflect <strong>US dollars</strong>.</li>
+											<li><strong>Data Cleanup:</strong> Checked for duplicates and removed any duplicate entries using the <strong>Remove Duplicates</strong> feature.</li>
+											<li><strong>Pivot Tables for Analysis:</strong> Created <strong>Pivot Tables</strong> to populate various summary sheets, including <strong>Total Sales</strong>, <strong>Country Bar Chart</strong>, and <strong>Top 5 Customers</strong>, for enhanced visualizations.</li>
+											<li><strong>Dynamic Dashboard Creation:</strong> Developed a <strong>dynamic dashboard</strong> to facilitate visual analysis of sales performance. This dashboard allows for the exploration of key metrics and insights.</li>
+										</ol>
+										<h2>Insights</h2>
+											<p>From the analysis of the coffee sales data, several key insights emerge that can inform business strategy and decision-making:</p>
+											<ol>
+												<li>
+													<strong>Sales by Coffee Type:</strong>
+													<p>The top-selling coffee types include <strong>Excelsa</strong> with $12,306.44 in sales and <strong>Liberica</strong> with $12,054.08. These two types dominate the sales, while <strong>Robusta</strong> has the lowest sales at $9,005.25. <strong>Arabica</strong> coffee type, often seen as a popular choice, generated $11,768.50, placing it in the middle in terms of revenue contribution.</p>
+												</li>
+												<li>
+													<strong>Total Revenue and Average Order Value:</strong>
+													<p>The total revenue from all coffee sales amounts to <strong>$45,134.26</strong>, with an <strong>average order value</strong> of <strong>$45.13</strong>. This suggests that the average customer spends approximately $45 per order, indicating a consistent purchase pattern.</p>
+												</li>
+												<li>
+													<strong>Total Units Sold:</strong>
+													<p>A total of <strong>3,551 units</strong> of coffee were sold, highlighting the volume of product moving through the business.</p>
+												</li>
+												<li>
+													<strong>Loyalty Program Performance:</strong>
+													<p>Customers who are part of the loyalty program contributed to <strong>$20,917.85</strong> in sales, which accounts for <strong>46.35%</strong> of total revenue. This indicates that nearly half of the business’s revenue is driven by loyal customers, emphasizing the importance of customer retention programs.</p>
+												</li>
+												<li>
+													<strong>Top Customers:</strong>
+													<p>The top five customers have been identified, with <strong>Allis Wilmore</strong> contributing the highest individual sales at <strong>$317</strong>, followed closely by <strong>Brenn Dundredge</strong> with <strong>$307</strong>. The total sales among the top five customers show relatively close figures, indicating a strong engagement from high-value customers.</p>
+												</li>
+												<li>
+													<strong>Geographical Sales Distribution:</strong>
+													<p>The <strong>United States</strong> leads in sales by region, generating <strong>$35,639</strong>, which accounts for the bulk of total revenue (approximately 79%). In comparison, the <strong>United Kingdom</strong> generated $2,799, and <strong>Ireland</strong> generated $6,697. This suggests that the US market is by far the most lucrative, with significant growth potential in international markets.</p>
+												</li>
+											</ol>
+
+											<h2>Recommendations</h2>
+											<p>Based on these insights, several actionable recommendations can be made to further enhance business performance:</p>
+											<ol>
+												<li>
+													<strong>Expand the Product Line:</strong>
+													<p>Given the strong performance of <strong>Excelsa</strong> and <strong>Liberica</strong>, the company should consider expanding its offerings in these coffee types by introducing new blends, flavors, or exclusive product variations to capitalize on their popularity.</p>
+												</li>
+												<li>
+													<strong>Increase Focus on Loyalty Program:</strong>
+													<p>With loyalty card members contributing nearly half of total revenue, it is crucial to continue nurturing and expanding the loyalty program. Offering exclusive deals, personalized promotions, and increased rewards could further incentivize repeat purchases from loyal customers.</p>
+												</li>
+												<li>
+													<strong>Targeted Marketing for Lesser-Selling Coffee Types:</strong>
+													<p><strong>Robusta</strong> coffee has the lowest sales among the different coffee types. Targeted marketing campaigns and promotions focused on this type could help boost its sales. Highlighting its unique features, potential health benefits, or pairing it with discounts could attract more interest.</p>
+												</li>
+												<li>
+													<strong>Geographical Market Expansion:</strong>
+													<p>Since the <strong>United States</strong> dominates sales, there is a clear opportunity to expand and focus marketing efforts in international markets like the <strong>United Kingdom</strong> and <strong>Ireland</strong>. Tailored campaigns and promotions that cater to regional preferences can help capture more market share in these areas.</p>
+												</li>
+												<li>
+													<strong>Customer Segmentation and Personalization:</strong>
+													<p>The top customers show relatively close sales contributions, indicating that they are valuable but can be encouraged to spend more. By segmenting customers based on purchasing behavior and preferences, personalized marketing strategies and exclusive offerings can be developed to further engage these high-value customers and increase their spending.</p>
+												</li>
+												<li>
+													<strong>Encourage Higher Average Order Value:</strong>
+													<p>While the current average order value is consistent, introducing promotions that encourage customers to increase their order sizes, such as bundle deals, free shipping on orders above a certain value, or tiered discounts, could further drive revenue growth.</p>
+												</li>
+											</ol>
+											<h2>Conclusion</h2>
+												<p>The comprehensive analysis of the coffee sales dataset provides valuable insights into customer behavior, sales performance, and product popularity. By utilizing dynamic dashboards and pivot tables, key metrics and visual representations of the data were effectively highlighted, allowing for easy interpretation and deeper understanding of sales trends.</p>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://github.com/narang-anmol" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/narang-anmol/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
