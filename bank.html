@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Anmol Narang</strong> <span>Portfolio</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major" style="display: flex; align-items: center;">
+										<h1 style="margin-right: 50px;">Bank Customer Segmentation</h1>
+										<div style="display: flex; gap: 15px;">
+											<a href="https://humberital-my.sharepoint.com/:x:/g/personal/n01579763_humber_ca/ER1cTxPdz4BMiq7qWtglucAB5GkkXvMs70ZPSHfxyb6zvA?e=wMMqWe" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View/Download Dataset</a>
+											<a href="https://github.com/narang-anmol/PortfolioProjects/blob/main/Customer%20Segmentation.ipynb" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View IPYNB (Code) File</a>
+										</div>
+									</header>
+									<span class="image main"><img src="images/bank_fr.jpg" alt="" /></span>
+									<h2>Introduction</h2>
+										<p>
+											In today's competitive financial landscape, understanding customer behavior and needs is essential for delivering personalized products and services. This project aims to segment customers of a bank using clustering techniques, with the ultimate goal of enabling the product team to make data-driven decisions that enhance customer experience and satisfaction. By identifying and analyzing distinct customer segments, the bank can tailor offerings, improve retention strategies, and identify cross-selling opportunities.
+										</p>
+										<p>
+											The dataset used in this project includes a range of customer demographic and financial attributes, such as age, tenure, balance, credit score, and geography. The segmentation was conducted in two stages: first, with geography as a factor, and then excluding geography to focus solely on behavioral patterns. This dual approach provides a comprehensive understanding of the bank's customer base, allowing us to identify both region-specific needs and broader behavioral trends.
+										</p>
+										<p>
+											Through this analysis, we aim to uncover actionable insights that will help the product team develop targeted strategies for each segment, enhancing the bank’s ability to cater to its diverse customer base.
+										</p>
+										<h2>Data Overview</h2>
+										<p>The analysis utilizes a dataset containing information on 10,000 bank customers. This dataset includes demographic, geographic, and financial attributes essential for customer segmentation. Each record corresponds to a unique customer and includes the following columns:</p>
+										<ul>
+											<li><strong>CustomerId:</strong> Unique identifier for each customer.</li>
+											<li><strong>Surname:</strong> Customer's last name (used as an identifier without relevance for segmentation).</li>
+											<li><strong>CreditScore:</strong> Numeric value representing the customer’s credit rating, potentially impacting product eligibility and financial behavior.</li>
+											<li><strong>Geography:</strong> The customer’s country of residence, which may influence product preferences and usage patterns.</li>
+											<li><strong>Gender:</strong> The customer’s gender, included to observe any gender-related trends in banking behavior.</li>
+											<li><strong>Age:</strong> Customer’s age, which may correlate with product adoption, tenure, and service needs.</li>
+											<li><strong>Tenure:</strong> The number of years the customer has been with the bank, useful for assessing loyalty and potential cross-selling opportunities.</li>
+											<li><strong>Balance:</strong> The customer’s account balance, indicating financial standing and potential for targeted products.</li>
+											<li><strong>NumOfProducts:</strong> Number of bank products currently used by the customer, highlighting cross-selling potential.</li>
+											<li><strong>HasCrCard:</strong> Binary indicator of whether the customer has a credit card with the bank.</li>
+											<li><strong>IsActiveMember:</strong> Binary indicator showing if the customer is actively engaging with the bank, impacting retention and marketing strategies.</li>
+											<li><strong>EstimatedSalary:</strong> Customer’s estimated annual salary, which may influence product eligibility and service needs.</li>
+											<li><strong>Exited:</strong> Binary indicator denoting if the customer has left the bank, aiding in identifying factors related to customer attrition.</li>
+										</ul>										
+										<h2>Data Preparation for Modeling</h2>
+
+										<p>My first task was preparing the data for modeling by selecting relevant features, ensuring the correct format, exploring distributions, and engineering a new feature. Below is a summary of the steps I took to clean and structure the data for clustering.</p>
+										
+										<ol>
+										  <li><strong>Loading the Dataset:</strong><br>
+											I loaded the dataset using `pd.read_csv()` and previewed the first 5 rows with `.head()`. This step gave me an initial look at the structure and content of the data.
+										  </li>
+										
+										  <li><strong>Feature Selection and Subsetting:</strong><br>
+											I removed irrelevant columns like <strong>CustomerId</strong>, <strong>Surname</strong>, and <strong>Exited</strong> since they weren't necessary for clustering. This helped me focus on the relevant features.
+										  </li>
+										
+										  <li><strong>Creating a Clean Copy:</strong><br>
+											To avoid modifying the original dataset, I created a copy using `.copy()`. This ensured I could work on the data without altering the original source.
+										  </li>
+										
+										  <li><strong>Label Encoding for Categorical Variables:</strong><br>
+											I encoded the <strong>Gender</strong> column using `np.where()` for binary encoding (Male=0, Female=1). For the <strong>Geography</strong> column, I used `pd.get_dummies()` to convert categorical values into separate binary columns, making the data suitable for modeling.
+										  </li>
+										
+										  <li><strong>Exploring Data Distributions:</strong><br>
+											I used `.describe()` to examine summary statistics and detect any outliers in the data. I found that:
+											<ul>
+											  <li><strong>Age:</strong> Distributed fairly evenly, with most customers between 30-50 years old.</li>
+											  <li><strong>Balance:</strong> Wide variation, but no extreme outliers.</li>
+											  <li><strong>NumOfProducts:</strong> Most customers had 1-2 products, indicating lower engagement with additional offerings.</li>
+											</ul>
+										  </li>
+										
+										  <li><strong>Visualizing Data Relationships:</strong><br>
+											To better understand the relationships between features, I used a pairplot to create a matrix of scatter plots. This visual exploration helped identify potential correlations that could inform the clustering process.
+											<br><br>
+											<p><strong>Click on the image to enlarge.</strong></p>	
+											<!-- Thumbnail Image -->
+												<img id="thumbnail" src="images/pairplot_output.jpg" alt="Pairplot" style="width: 150px; height: 150px; cursor: pointer;" onclick="openModal();">
+										
+												<!-- The Modal -->
+												<div id="modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8);">
+													<!-- Close Button -->
+													<span onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer;">&times;</span>
+													<!-- Full-size Image -->
+													<img id="full-image" src="images/pairplot_output.jpg" alt="Pairplot" 
+														 style="max-width: 90%; max-height: 90%; display: block; margin: auto; margin-top: 5%; 
+														 transform: scale(0.5); opacity: 0; transition: transform 0.5s ease, opacity 0.5s ease;">
+												</div>
+										
+												<script>
+													// Open modal function when thumbnail is clicked
+													function openModal() {
+														document.getElementById("modal").style.display = "block";
+														
+														// Apply the zoom-in effect with transition
+														var fullImage = document.getElementById("full-image");
+														fullImage.style.transform = "scale(1)";   // Scale the image to full size
+														fullImage.style.opacity = "1";             // Fade in the image
+													}
+										
+													// Close modal function when close button is clicked
+													function closeModal() {
+														document.getElementById("modal").style.display = "none";
+														
+														// Reset the image zoom and opacity when closing
+														var fullImage = document.getElementById("full-image");
+														fullImage.style.transform = "scale(0.5)";   // Minimize the image size
+														fullImage.style.opacity = "0";              // Fade out the image
+													}
+										
+													// Close modal when clicked outside the image
+													window.onclick = function(event) {
+														if (event.target == document.getElementById("modal")) {
+															closeModal();
+														}
+													}
+												</script>
+											</li>
+										
+											<li>
+												<strong>Feature Engineering - Products Per Year</strong><br>
+												I created a new feature, <strong>ProductsPerYear</strong>, which represents the average number of products a customer has per year. This was calculated by dividing <strong>NumOfProducts</strong> by <strong>Tenure</strong> (the number of years the customer has been with the bank). The feature is useful for understanding how product usage changes with customer tenure, which can reveal insights about loyalty and churn.
+											</li>
+										</ol>
+										
+										<p>With these steps, I successfully prepared the data for clustering. The dataset is now clean, relevant, and structured for modeling. All categorical variables are encoded, new features are engineered, and any data issues have been addressed. This comprehensive data preparation ensures that the machine learning algorithm can effectively identify patterns in customer behavior.</p>
+										
+										
+										
+										<h2>Customer Segmentation (First Stage)</h2>
+										<p>The goal was to segment the bank’s customer base using K-Means clustering to guide targeted strategies. I standardized the data, tested various cluster counts, and identified the optimal number of clusters.</p>
+										
+										<h3>Task Breakdown</h3>
+										<ul>
+										  <li><strong>Data Standardization:</strong> Used <strong>StandardScaler</strong> from scikit-learn to ensure comparability across features.</li>
+										  <li><strong>K-Means Clustering:</strong> Ran clustering from 2 to 15 clusters using <strong>KMeans</strong> and <strong>silhouette_score</strong> to evaluate optimal cluster count.</li>
+										  <li><strong>Elbow Method:</strong> Identified the optimal cluster count at <em>k = 5</em> using the inertia plot.</li>
+										  <li><strong>Optimal Clustering:</strong> Chose <em>k = 5</em> and fit the final model using <strong>KMeans</strong>.</li>
+										</ul>
+										
+										<h3>Cluster Center Heatmap and Interpretation</h3>
+										<div class="highlight">
+										  Created a heatmap using <strong>Seaborn</strong> and <strong>Matplotlib</strong> to visualize cluster centers and interpret customer segments.
+										</div>
+										<img id="heatmap-thumbnail" src="images/hmap1.png" alt="Heatmap" onclick="openHeatmapModal();">	
+										<h3>Cluster Interpretation</h3>
+											<table>
+											<tr><th>Cluster</th><th>Description</th></tr>
+											<tr><td><strong>Cluster 0</strong></td><td>Highly engaged customers with multiple products.</td></tr>
+											<tr><td><strong>Cluster 1</strong></td><td>Wealthy French customers with fewer products but high balances.</td></tr>
+											<tr><td><strong>Cluster 2</strong></td><td>Wealthy German customers with high balances.</td></tr>
+											<tr><td><strong>Cluster 3</strong></td><td>French customers with many products but low balances.</td></tr>
+											<tr><td><strong>Cluster 4</strong></td><td>Spanish customers with a balanced approach across metrics.</td></tr>
+											</table>									
+
+											<h2>Customer Segmentation Using K-Means Clustering</h2>
+
+											<p>The goal was to segment the customers based on selected features, excluding the country-related fields. Using K-Means clustering, I aimed to identify customer segments that share similar characteristics. Below are the steps I followed:</p>
+											
+											<h3>Task Breakdown</h3>
+											<ul>
+												<li><strong>Summary Statistics by Geography:</strong> Analyzed summary statistics by geography (i.e., country) to uncover regional patterns. For example, I observed that German customers tend to have higher account balances.</li>
+												<li><strong>Preprocessing for Clustering:</strong> Removed the country-related columns to ensure clustering was not biased by geography. Focused on features such as <strong>Balance</strong>, <strong>Age</strong>, and <strong>NumOfProducts</strong>.</li>
+												<li><strong>K-Means Clustering with Varying Number of Clusters:</strong> Ran clustering with cluster counts from 2 to 15 to evaluate inertia and silhouette scores and identify the optimal number of clusters.</li>
+												<li><strong>Choosing the Optimal Number of Clusters:</strong> Based on the inertia plot, I identified that <em>k = 4</em> was the optimal number of clusters.</li>
+											</ul>											
+											<h3>Cluster Center Heatmap and Interpretation</h3>
+											<div class="highlight">
+												Created a heatmap to visualize the cluster centers and interpret customer segments.
+											</div>
+											<img id="heatmap-thumbnail" src="images/hmap2.png" alt="Heatmap" onclick="openHeatmapModal();">
+											
+											<h3>Cluster Interpretation</h3>
+											<table>
+												<tr><th>Cluster</th><th>Description</th></tr>
+												<tr><td><strong>Cluster 0</strong></td><td>Customers who don't have a credit card.</td></tr>
+												<tr><td><strong>Cluster 1</strong></td><td>Customers with a high balance, fewer products, and a credit card.</td></tr>
+												<tr><td><strong>Cluster 2</strong></td><td>Customers with a low balance, more products, and a credit card.</td></tr>
+												<tr><td><strong>Cluster 3</strong></td><td>Customers with many products in a short period.</td></tr>
+											</table>	
+											
+											<h2>Explore the Clusters and Make Recommendations</h2>
+
+											<p>The final objective is to further explore the customer clusters created through K-Means clustering, particularly by analyzing their churn rate and country breakdown. Based on this, I made recommendations for how to cater to each cluster effectively.</p>
+
+											<h3>Task Breakdown</h3>
+											<ul>
+											<li><strong>Data Integration:</strong> I combined the customer data set from the end of Objective 1 with the "Exited" field (representing customer churn) and the K-Means cluster labels to create a new DataFrame.</li>
+											<li><strong>Churn Rate Analysis:</strong> I calculated the churn rate for each cluster to understand the proportion of customers who exited.</li>
+											<li><strong>Country Breakdown:</strong> I analyzed the country distribution for each cluster to identify regional patterns in customer behavior.</li>
+											<li><strong>Recommendations:</strong> Based on the cluster characteristics and churn rate, I made actionable recommendations for each customer segment to reduce churn and improve engagement.</li>
+											</ul>
+
+											<h3>Data Integration and Churn Rate Analysis</h3>
+											<p>To create the final dataset, I combined the cleaned customer data with the "Exited" field and the K-Means cluster labels. This allowed me to examine the relationship between the clusters and customer churn. I then analyzed the churn rate for each cluster by grouping the data by the "Cluster" label and calculating the mean churn rate for each group. This gave me a clear view of how each cluster behaved in terms of customer exit rates.</p>
+
+											<h3>Cluster Breakdown and Recommendations</h3>
+											<p>Based on my analysis, I made the following recommendations for each cluster:</p>
+
+											<h4>Cluster 0: Customers Without a Credit Card</h4>
+											<p><strong>Behavior Insight:</strong> Customers in this cluster have no credit card, which may indicate lower engagement with banking products.</p>
+											<p><strong>Recommendation:</strong></p>
+											<ul>
+											<li><strong>Offer entry-level credit cards:</strong> Introducing affordable credit cards with low fees and small credit limits could help entice these customers to use more financial products.</li>
+											<li><strong>Promote basic banking products:</strong> I would recommend targeting these customers with essential products like savings accounts and loans that are easy to understand and use.</li>
+											<li><strong>Targeted communication:</strong> Marketing campaigns could be tailored to educate these customers on the benefits of having a credit card, such as building credit history or receiving cashback rewards.</li>
+											</ul>
+
+											<h4>Cluster 1: High Balance Customers with Fewer Products</h4>
+											<p><strong>Behavior Insight:</strong> These customers maintain high balances but use fewer products. They may be financially stable but underutilize the bank’s services.</p>
+											<p><strong>Recommendation:</strong></p>
+											<ul>
+											<li><strong>Introduce premium products:</strong> I would suggest offering high-end products such as premium credit cards, wealth management services, or personalized financial advice to increase engagement.</li>
+											<li><strong>Loyalty rewards:</strong> Creating loyalty programs and personalized financial plans for customers with significant balances would be an excellent way to reward them for their loyalty.</li>
+											<li><strong>Exclusive promotions:</strong> Targeted marketing campaigns could introduce luxury products or exclusive banking services designed for affluent customers, encouraging them to engage more deeply with the bank.</li>
+											</ul>
+
+											<h4>Cluster 2: Customers with Low Balances, More Products, and a Credit Card</h4>
+											<p><strong>Behavior Insight:</strong> These customers have a variety of products but lower balances, indicating that they are engaged with the bank but could benefit from guidance in managing their finances.</p>
+											<p><strong>Recommendation:</strong></p>
+											<ul>
+											<li><strong>Offer financial education:</strong> Providing free resources, such as debt management workshops, budgeting tools, and credit score improvement guides, could help these customers manage their finances more effectively.</li>
+											<li><strong>Product bundling:</strong> Introducing bundled offers that combine products like loans, insurance, or savings plans at discounted rates could encourage further engagement.</li>
+											<li><strong>Reward programs:</strong> Implementing a reward system that incentivizes responsible credit use, savings, or financial health improvement would help build long-term value for these customers.</li>
+											</ul>
+
+											<h4>Cluster 3: Customers with Many Products in a Short Period</h4>
+											<p><strong>Behavior Insight:</strong> These customers are highly engaged, acquiring multiple products quickly. This suggests they are open to new offerings but may require personalized retention strategies.</p>
+											<p><strong>Recommendation:</strong></p>
+											<ul>
+											<li><strong>Personalized banking solutions:</strong> Introducing tailored services such as personalized financial advice, budgeting tools, or exclusive product offers could match their preferences and increase their satisfaction.</li>
+											<li><strong>Customer retention programs:</strong> Offering loyalty programs that reward long-term engagement, such as exclusive promotions or limited-time offers, could help retain these high-engagement customers.</li>
+											<li><strong>Targeted product launches:</strong> I recommend focusing on introducing products that appeal to their broad interests, such as savings plans or investment options, while maintaining an emphasis on their financial goals.</li>
+											</ul>
+
+											<p>These recommendations aim to optimize customer engagement, reduce churn, and improve satisfaction across the different segments by offering personalized solutions that match each cluster’s unique behavior and needs.</p>
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://github.com/narang-anmol" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/narang-anmol/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
