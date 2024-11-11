@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Anmol Narang</strong> <span>Portfolio</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major" style="display: flex; align-items: center;">
+										<h1 style="margin-right: 125px;">Marketing Campaign Analysis</h1>
+										<div style="display: flex; gap: 15px;">
+											<a href="https://humberital-my.sharepoint.com/:x:/g/personal/n01579763_humber_ca/EZq6k7mPA-1HqOYTC3SeQlkB8SqeFWYsUZHj8QR1YpsOgg?e=ZFlSli" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View/Download Dataset</a>
+											<a href="https://public.tableau.com/views/MarketingCampaignAnalysis_17312636679110/Pg2CampaignEffectiveness?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View Dashboard</a>
+										</div>
+									</header>																
+																	
+									<span class="image main"><img src="images/marketing.jpg" alt="" /></span>
+									<h2>Introduction</h2>
+                                    <p>This project focuses on analyzing the performance of digital marketing campaigns to extract actionable insights and optimize future strategies. Using a dataset of daily ad performance metrics, the goal was to understand how different campaigns, channels, and devices influenced user engagement and conversions. Metrics such as Click-Through Rate (CTR), Return on Investment (ROI), Customer Acquisition Cost (CAC), and Conversion Rate were calculated to assess campaign effectiveness and financial performance.</p>
+                                        
+                                    <p>Tools used in this analysis included Excel, where the data was preprocessed and cleaned, and Tableau, where a three-page interactive dashboard was created. This dashboard visualizes key campaign metrics, trends over time, and financial insights, providing a comprehensive view of performance and enabling informed decision-making.</p>
+
+                                    <h2>Data Preprocessing</h2>
+
+                                    <p>The data preprocessing phase involved transforming raw campaign data into a clean and structured format for analysis. Excel was used to handle initial data cleaning, including the removal of null values and correcting calculation errors, particularly for fields such as ROI, Customer Acquisition Cost (CAC), and Conversion Rate.</p>
+
+                                    <p><strong>Key steps included:</strong></p>
+
+                                    <ol>
+                                    <li><strong>Data Cleaning:</strong> Addressed null values in columns like ROI and CAC. Where initial calculations produced errors (e.g., division by zero), these were handled to maintain data integrity.</li>
+                                    
+                                    <li><strong>Calculated Fields:</strong> New metrics were created to support detailed analysis. For instance:
+                                        <ul>
+                                        <li><strong>ROI</strong> was calculated as <code>(Total Conversion Value - Spend) / Spend</code>.</li>
+                                        <li><strong>Conversion Rate (%)</strong> as <code>(Conversions / Clicks) * 100</code>.</li>
+                                        <li><strong>CAC</strong> as <code>Spend / Conversions</code>, allowing for insights into cost-efficiency per customer acquired.</li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <li><strong>Data Formatting:</strong> Columns were organized, and consistent naming conventions were applied. Calculations were set to numeric values where applicable, facilitating seamless integration into Tableau.</li>
+                                    </ol>
+
+                                    <p>This preprocessing provided a solid foundation for the Tableau dashboard, which would later visualize these insights and enable in-depth, interactive analysis.</p>
+
+                   					<h2>Tableau Dashboard Creation</h2>
+
+                                    <p>The dashboard consists of three pages, each targeting different aspects of campaign analysis:</p>
+
+                                    <div class="dashboard-section">
+										<h2>Page 1: Campaign Overview Dashboard</h2>
+										<div class="image-container">
+											<img src="images/overview.png" alt="Page 1: Campaign Overview">
+										</div>
+										<ul>
+											<li><strong>KPI Summary:</strong> Displays high-level metrics, including Impressions, Clicks, Shares, Comments, Total Conversion Value (GBP), Spend (GBP), Conversions, and ROI (%), providing a quick overview of campaign reach and efficiency.</li>
+											<li><strong>Conversion Distribution (Device vs. Channel):</strong> Stacked bar chart showing conversions segmented by device (Desktop vs. Mobile) for each channel (Facebook, Instagram, Pinterest), giving insights into device-specific performance.</li>
+											<li><strong>Spend vs. Clicks Trend:</strong> Dual-axis line chart showing monthly trends for Spend (GBP) and Clicks, offering a view of spending patterns and engagement over time.</li>
+										</ul>
+										<p class="filter-section">Filters: Campaign, Location, Channel, and Date Range to refine insights based on specific criteria.</p>
+									</div>
+								
+									<div class="dashboard-section">
+										<h2>Page 2: Campaign Effectiveness Analysis</h2>
+										<div class="image-container">
+											<img src="images/effectiveness.png" alt="Page 2: Campaign Effectiveness Analysis">
+										</div>
+										<ul>
+											<li><strong>Campaign Reach (Bubble Chart):</strong> Displays seasonal reach, with bubble size representing total clicks by season (Fall, Spring, Summer), providing an understanding of seasonal campaign performance.</li>
+											<li><strong>Impressions by Location:</strong> Bar chart showing impressions across locations (London, Manchester, Birmingham), highlighting geographic reach and effectiveness.</li>
+											<li><strong>Quarterly Conversions by Ad Type:</strong> Bar chart segmented by quarter and ad type (e.g., Collection, Discount), showcasing conversion trends and helping identify high-performing ads across seasons.</li>
+										</ul>
+										<p class="filter-section">Filters: Channel, Device, and Date Range to focus analysis on specific campaign aspects.</p>
+									</div>
+								
+									<div class="dashboard-section">
+										<h2>Page 3: Financial Performance and Budget Allocation</h2>
+										<div class="image-container">
+											<img src="images/financial.png" alt="Page 3: Financial Performance and Budget Allocation">
+										</div>
+										<ul>
+											<li><strong>Revenue vs. Spend by Campaign:</strong> Bar chart comparing revenue (Total Conversion Value) and spend across campaigns (Fall, Spring, Summer), providing insights into campaign profitability.</li>
+											<li><strong>ROI by Month:</strong> Line chart tracking monthly ROI %, offering insights into performance fluctuations and helping identify peak ROI periods.</li>
+											<li><strong>CAC Across Campaigns:</strong> Box plot with median Customer Acquisition Cost (CAC) per campaign (Fall, Spring, Summer), helping assess cost efficiency.</li>
+										</ul>
+										<p class="filter-section">Filters: Device, Channel, and Date Range for detailed financial analysis.</p>
+									</div>
+
+									<h2>Conclusion and Recommendations</h2>
+
+									<p>The dashboard analysis provided valuable insights into campaign performance and areas for enhancement. High visibility and user engagement across all three campaigns were evident, with over 14 million impressions and 181,598 clicks. Desktop devices drove the most conversions on each channel (Facebook, Instagram, and Pinterest), suggesting a priority to optimize ad content for desktop.</p>
+
+									<p>The fall campaign emerged as the top performer in reach, clicks, reactions, and click-through rate (CTR). Among the three targeted cities—London, Manchester, and Birmingham—London led in impressions. Quarter three recorded the highest conversions for both discount and collection ads, while quarter one was lower, likely due to the March start. Future campaigns could benefit from extending these proven ad types and timing them to align with periods of peak engagement.</p>
+
+									<p>Financially, the fall campaign achieved the highest revenue with the highest spend, leading to elevated CPC and CAC. With a median CAC across all customers of £17,624, strategies to reduce acquisition costs—such as testing lower-cost channels or refining targeting to higher-value segments—could increase efficiency. Notable CPC fluctuations across days suggest that refining bid strategies for peak engagement periods could help manage costs.</p>
+
+									<p>In summary, these insights confirm the effectiveness of seasonal campaigns and provide clear steps for future improvements. By aligning budget allocations to the most successful channels and targeting engagement peaks, campaigns can maximize ROI. Streamlining acquisition cost management and optimizing ad content for high-converting devices and audiences will further enhance profitability.</p>
+
+								</div>
+							</section>
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/narang-anmol" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/narang-anmol/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
