@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Anmol Narang</strong> <span>Portfolio</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major" style="display: flex; align-items: center;">
+										<h1 style="margin-right: 300px;">Zillow ETL Pipeline</h1>
+										<div style="display: flex; gap: 15px;">
+											<a href="https://github.com/narang-anmol/PortfolioProjects/blob/main/Zillow%20ETL%20Pipeline/zillowAnalytics.py" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View DAG Python File</a>
+											<a href="https://github.com/narang-anmol/PortfolioProjects/tree/main/Zillow%20ETL%20Pipeline/lambda-functions" class="button" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; border-radius: 8px;">View Lambda Functions</a>
+										</div>
+									</header>
+									<span class="image main"><img src="images/pipeline.jpg" alt="" /></span>
+									<h2>Introduction</h2>
+									<p>
+										I built an end-to-end ETL pipeline for processing Toronto's real estate data from Zillow, using Python and various AWS services. 
+										This project involves clearly defined stages, from extracting data via the Zillow Rapid API to 
+										creating visualizations in Amazon QuickSight. Each step of the process is orchestrated using 
+										<strong>Apache Airflow</strong> running on an Amazon EC2 instance, ensuring seamless task automation 
+										and dependency management.
+									</p>
+									<p>
+										The pipeline stages include:  
+										<ul>
+											<li><strong>Data Extraction:</strong> Retrieving raw data from the Zillow Rapid API.</li>
+											<li><strong>Data Loading:</strong> Storing raw data in a secure S3 Landing Zone.</li>
+											<li><strong>Intermediate Processing:</strong> Using AWS Lambda to copy data to an Intermediate Zone and transform it.</li>
+											<li><strong>Data Validation:</strong> Verifying the presence of transformed data in a final S3 bucket.</li>
+											<li><strong>Data Loading into Redshift:</strong> Analyzing the transformed data in Amazon Redshift.</li>
+											<li><strong>Visualization:</strong> Generating dashboards in Amazon QuickSight.</li>
+										</ul>
+									</p>
+						
+									<h2>Workflow Overview</h2>
+							
+									<h3>1. Extract Data</h3>
+									<p>
+										- Used Python to connect to the Zillow Rapid API and extract real estate property data.<br>
+										- Stored the raw data temporarily on an Amazon EC2 instance.
+									</p>
+							
+									<h3>2. Load Raw Data into S3 (Landing Zone)</h3>
+									<p>
+										- Transferred the raw data from EC2 to an Amazon S3 bucket (Landing Zone) using a <strong>Bash operator</strong> in Apache Airflow.<br>
+										- The Landing Zone ensures the original data remains pristine and untampered.
+									</p>
+							
+									<h3>3. Data Copy and Transformation</h3>
+									<p>
+										- Triggered an <strong>AWS Lambda function</strong> whenever new data was added to the Landing Zone.<br>
+										- <strong>Step 1:</strong> Copied the raw data from the Landing Zone to an <strong>Intermediate Zone</strong> bucket in S3.<br>
+										- <strong>Step 2:</strong> Triggered another Lambda function to clean and transform the data by retaining relevant columns and converting it into a CSV format.<br>
+										- Stored the transformed data in a third bucket (Processed Zone).
+									</p>
+							
+									<h3>4. Data Validation</h3>
+									<p>
+										- Used an <strong>S3 Key Sensor</strong> in Apache Airflow to ensure the transformed data was present in the Processed Zone before proceeding to the next stage.
+									</p>
+							
+									<h3>5. Load Transformed Data into Amazon Redshift</h3>
+									<p>
+										- Transferred the validated and transformed data from the Processed Zone in S3 to an <strong>Amazon Redshift cluster</strong>.<br>
+										- Enabled querying and analysis of the processed data.
+									</p>
+							
+									<h3>6. Data Visualization</h3>
+									<p>
+										- Connected <strong>Amazon QuickSight</strong> to the Redshift cluster to create interactive dashboards.<br>
+										- These visualizations showcased trends in real estate data, including property price distributions, geographical insights, and other metrics.
+									</p>
+
+						
+									<h2>Orchestration with Apache Airflow</h2>
+									<p>
+										All pipeline tasks were orchestrated using <strong>Apache Airflow</strong> running on an Amazon EC2 instance. 
+										This setup allowed me to:
+										<ul>
+											<li>Automate each stage of the ETL process.</li>
+											<li>Ensure task dependencies were respected.</li>
+											<li>Monitor and recover from errors efficiently.</li>
+										</ul>
+									</p>
+
+							
+									<h2>DAG Overview</h2>
+									<div class="image-container">
+										<p><em>Figure 1: ETL Pipeline DAG Workflow</em></p>
+										<span class="image main"><img src="images/dag.png" alt="" /></span>
+									</div>
+
+							
+									<h2>Visualizations</h2>
+									<div class="visuals-container">
+										<p><em>Figure 1: Average Cost of Toronto Townhouses</em></p>
+										<span class="image main"><img src="images/townhouseAvgCostTO.png" alt="" /></span>
+										<p><em>Figure 2: Average Cost of Toronto Single Family Homes</em></p>
+										<span class="image main"><img src="images/famhomesAvgCostTO.png" alt="" /></span>
+										<p><em>Figure 3: Average Cost of Toronto Condos</em></p>
+										<span class="image main"><img src="images/condosAvgCostTO.png" alt="" /></span>
+									</div>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://github.com/narang-anmol" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/narang-anmol/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
